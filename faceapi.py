@@ -7,7 +7,7 @@ class FaceAPI:
     """get face information using Microsoft FaceAPI"""
 
     __headers = {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/octet-stream',
         'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY,
     }
 
@@ -20,10 +20,11 @@ class FaceAPI:
     face_id = ""
     __face_all = ""
 
-    def __init__(self, image_url):
-        body = {'url': image_url}
+    # constructor is require to upload face image path
+    def __init__(self, image_path):
         try:
-            response = requests.request('POST', URI_BASE + '/face/v1.0/detect', json=body, data=None, headers=self.__headers, params=self.__params)
+            # response = requests.request('POST', URI_BASE + '/face/v1.0/detect', json=body, data=None, headers=self.__headers, params=self.__params)
+            response = requests.request("POST", URI_BASE + "/face/v1.0/detect?", params=self.__params, data=open(image_path, 'rb'), headers=self.__headers)
 
             if(response):
                 self.__face_all = json.loads(response.text)[0]
