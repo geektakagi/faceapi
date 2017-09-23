@@ -1,6 +1,6 @@
 import http.client, urllib.request, urllib.parse, urllib.error, base64, requests, json
 
-SUBSCRIPTION_KEY = '51cad757b0184072bea8239825472ec2'
+SUBSCRIPTION_KEY = '***' // TODO: Insert your SUBSCTIPRION KEY
 URI_BASE = 'https://westcentralus.api.cognitive.microsoft.com'
 
 class FaceAPI:
